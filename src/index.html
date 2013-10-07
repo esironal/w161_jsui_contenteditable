@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>jsui_contentEditable</title>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<div class="btn-toolbar">
+				<span class="brand">contentEditable</span>
+				<div class="btn-group">
+					<button class="btn" id="preview">Preview</button>
+				</div>
+			<!--
+				<div class="btn-group">
+					<button class="btn"><i class="icon-bold"></i></button>
+					<button class="btn"><i class="icon-italic"></i></button>
+				</div>
+				<div class="btn-group">
+					<button class="btn"><i class="icon-align-left"></i></button>
+					<button class="btn"><i class="icon-align-center"></i></button>
+					<button class="btn"><i class="icon-align-right"></i></button>
+					<button class="btn"><i class="icon-align-justify"></i></button>
+				</div>
+			-->
+				<div class="btn-group pull-right">
+					<button class="btn" data-toggle="modal" data-target="#about">about</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container" style="margin-top: 75px;">
+	<div id="region">
+		<p>Pellentesque eget massa velit. Aenean in urna pharetra, sagittis tellus ut, ultricies erat. Duis mauris erat, molestie nec tristique nec, consectetur vel velit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris elit orci, malesuada ut sollicitudin vel, tempus nec massa. Curabitur ultricies ac nisl ut interdum. Duis tincidunt vel elit non aliquet. Duis eget arcu ut nunc placerat interdum. Donec sed mauris dui. Sed cursus purus mollis neque ullamcorper ullamcorper.</p>
+		<p>Sed malesuada a justo id rutrum. Nunc facilisis odio a lorem ultrices iaculis. Curabitur faucibus tortor nunc, eget commodo enim suscipit non. Nunc sagittis tincidunt dui, a congue nunc porta eget. Etiam ultricies, nulla nec ullamcorper varius, urna augue porttitor magna, vel dictum urna orci pulvinar justo. Nunc ullamcorper tempor tellus, a auctor eros fringilla ac. Etiam consectetur vulputate ullamcorper. Integer a tellus dignissim, pellentesque mauris at, dictum augue. Proin eu vehicula enim. Curabitur aliquam diam in lorem facilisis, non suscipit massa consequat. Donec iaculis nisi tellus, et cursus eros ultrices non. Nulla a enim leo. Donec et bibendum orci, vel consequat lacus. Fusce a ornare felis, blandit suscipit ipsum.</p>
+		<p>In iaculis viverra velit, aliquam eleifend lectus. Donec in commodo dolor, quis hendrerit tellus. Donec vel interdum urna. Mauris convallis viverra lorem et auctor. Donec iaculis risus quis massa ullamcorper, sit amet tempus arcu tristique. Vestibulum et velit consequat, blandit augue sit amet, auctor nibh. Nulla est mi, interdum a commodo nec, mollis id erat. Integer nisl nibh, pharetra quis felis fermentum, consectetur ultricies neque. Curabitur id lacus sed odio tincidunt interdum congue ac augue. Vestibulum sed lacinia est, at congue neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer id eros sit amet mauris mattis gravida ut quis lacus. Suspendisse et accumsan lorem, quis accumsan libero. Integer elementum rhoncus risus eu egestas.</p>
+	</div>
+</div>
+
+<!-- Modal -->
+<div id="about" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h5 class="muted">about &mdash; jsui_contentEditable</h5>
+	</div>
+	<div class="modal-body">
+		<p>A basic example of how to use <strong>contentEditable</strong> attribute.</p>
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	</div>
+</div>
+
+<style type="text/css">
+.focus {
+  border: 0px solid rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+</style>
+
+<script type="text/javascript">
+jQuery(function () {
+	function update() {
+		if ($('#preview').hasClass('active')) {
+			$('#region').removeClass('focus').get(0).contentEditable = false;
+		}
+		else {
+			$('#region').addClass('focus').get(0).contentEditable = true;
+		}
+	}
+	$('#preview').click(function () {
+		$(this).toggleClass('active');
+		update();
+	});
+	update();
+});
+</script>
+
+</body>
+</html>
